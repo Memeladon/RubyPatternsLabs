@@ -17,3 +17,9 @@ username = ARGV[0]
   else
     puts 'Ну, время подумать еще есть...'
   end
+
+ruby = "puts 'Hello!'"
+eval ruby
+
+cmd = "ls"
+system cmd
