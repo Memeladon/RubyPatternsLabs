@@ -19,6 +19,20 @@ class Student
     self.github = options[:github] || ""
   end
 
+# Метод validate для проверки наличия гита и контакта
+  def validate
+    validate_github_presence
+    validate_contact_presence
+  end
+
+  def validate_github_presence
+    errors.add(:github, "необходимо указать ссылку на Github") if github.blank?
+  end
+
+  def validate_contact_presence
+    errors.add(:contact, "необходимо указать контакт для связи (телефон, телеграм или email)") if [phone, telegram, email].all?(&:blank?)
+  end
+
   # Правильность номера телефона
   def phone_valid?
     !!(/^(\+7|7|8)?[\d]{10}$/ =~ phone)
