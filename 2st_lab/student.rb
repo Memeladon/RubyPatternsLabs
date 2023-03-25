@@ -1,6 +1,12 @@
 # Создание класса
 class Student
   attr_accessor :id, :last_name, :first_name, :middle_name, :phone, :telegram, :email, :github
+
+  # Валидации для полей
+  validates :last_name, :first_name, format: { with: /\A[a-zA-Z]+\z/, message: "Должны содержать только буквы" }
+  validates :middle_name, :telegram, :email, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "Должны содержать только буквы, цифры и символ нижнего подчеркивания" }
+  validates :github, :git_link, format: { with: /\A[a-zA-Z0-9_-]+\z/, message: "Должны содержать только буквы, цифры, символы нижнего подчеркивания и дефиса" }
+ 
   # передаем в конструктор объект типа Hash и используем его для инициализации объекта
   def initialize(**options)
     self.id = options[:id]
