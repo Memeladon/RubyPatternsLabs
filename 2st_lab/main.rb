@@ -4,10 +4,9 @@ student_1 = Student.new(id: 1, last_name: "Иванов", first_name: "Иван"
     phone: "+79001234567", email: "ivanov@exampleNO LINKS")
 student_2 = Student.new(id: 2, last_name: "Петров", first_name: "Петр", 
     middle_name: "Петрович", telegram: "@petr_petrov", github: "petr_petrov")
+student_3 = Student.new(id: 3, last_name: "Сидоров", 
+    first_name: "Сидор", telegram: "@sidor_sidorov")
 
-student_3 = Student.new(id: 3, last_name: "Сидоров", first
-    t_name: "Сидор", telegram: "@sidor_sidorov")
-    
 puts "Студент 1:"
 puts "ID: #{student_1.id}"
 puts "ФИО: #{student_1.last_name} #{student_1.first_name} #{student_1.middle_name}"
