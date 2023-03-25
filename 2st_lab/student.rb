@@ -32,6 +32,13 @@ class Student
   def validate_contact_presence
     errors.add(:contact, "необходимо указать контакт для связи (телефон, телеграм или email)") if [phone, telegram, email].all?(&:blank?)
   end
+  
+   # Метод для установки значений поля или полей для введенных контактов
+  def set_contacts(**options)
+    self.phone = options[:phone] if options[:phone]
+    self.telegram = options[:telegram] if options[:telegram]
+    self.email = options[:email] if options[:email]
+  end
 
   # Правильность номера телефона
   def phone_valid?
