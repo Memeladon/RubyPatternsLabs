@@ -1,9 +1,8 @@
 
 class Student
-  attr_reader :phone_number,  :email, :github
-  attr_writer :telegram, :id, :last_name, :first_name, :middle_name
+  attr_accessor :id, :last_name, :first_name, :middle_name, :phone_number, :telegram, :email, :github
 
-  def initialize(id, last_name, first_name, middle_name, phone_number, telegram, email, github)
+  def initialize(id:, last_name:, first_name:, middle_name:, phone_number:, telegram:, email:, github:)
     @id = id
     @last_name = last_name
     @first_name = first_name
