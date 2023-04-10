@@ -17,14 +17,24 @@ class Student
     validate_contact_presence
   end
 
+  def set_contacts(**contacts)
+    @phone_number = contacts[:phone_number] if contacts[:phone_number]
+    @telegram = contacts[:telegram] if contacts[:telegram]
+    @email = contacts[:email] if contacts[:email]
+    @github = contacts[:github] if contacts[:github]
+    
+    validate_phone_number_presence
+    validate_contact_presence
+  end
+
   def validate_phone_number_presence
-    raise "Не указан омер телефона" unless @phone_number
+    raise "Не указан номер телефона" unless @phone_number
   end
 
   def validate_contact_presence
     raise "Не указан контакт для связи" unless @github || @telegram || @email
   end
-  
+
 end
 
 
