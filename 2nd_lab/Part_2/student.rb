@@ -35,6 +35,10 @@ class Student
     raise "Не указан контакт для связи" unless @github || @telegram || @email
   end
 
+  def to_s
+    "ID: #{@id}\nФамилия: #{@last_name}\nИмя: #{@first_name}\nОтчество: #{@middle_name}\nНомер: #{@phone_number}\nTelegram: #{@telegram}\nEmail: #{@email}\nGitHub: #{@github}"
+  end
+
 end
 
 
