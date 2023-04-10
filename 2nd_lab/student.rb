@@ -13,48 +13,20 @@ class Student
     @email = contacts[:email]
     @github = contacts[:github]
   
-    validate_phone_number
-    validate_last_name
-    validate_first_name
-    validate_middle_name
-    validate_telegram
-    validate_email
-    validate_github
+    validate_phone_number_presence
+    validate_contact_presence
   end
 
-  def validate_phone_number
-    raise "Неправильный формат номера" unless @phone_number =~ /^\+\d{11}$/
+  def validate_phone_number_presence
+    raise "Не указан омер телефона" unless @phone_number
   end
 
-  def validate_last_name
-    raise "Неправильный формат Фамилии" unless @last_name =~ /^[A-Za-z\-]+$/
+  def validate_contact_presence
+    raise "Не указан контакт для связи" unless @github || @telegram || @email
   end
-
-  def validate_first_name
-    raise "Неправильный формат имени" unless @first_name =~ /^[A-Za-z\-]+$/
-  end
-
-  def validate_middle_name
-    raise "Неправильный формат Отчества" unless @middle_name =~ /^[A-Za-z\-]*$/
-  end
-
-  def validate_telegram
-    raise "Неправильный формат телеграмма" unless @telegram =~ /^@[A-Za-z]*$/
-  end
-
-  def validate_email
-    raise "Неправильный формат почты" unless @email =~ /^([A-Za-z0-9]+[_\.\-]?)*[A-Za-z0-9]+@([A-Za-z0-9]+[\.\-]?)*[A-Za-z0-9]+\.[A-Za-z]{2,}$/
-  end
-
-  def validate_github
-    raise "Неправильный формат гита" unless @github =~ /^https:\/\/githubNO LINKS\/[A-Za-z0-9_\-]+\/?$/
-  end
-
-  def to_s
-    "ID: #{@id}\nФамилия: #{@last_name}\nИмя: #{@first_name}\nОтчество: #{@middle_name}\nНомер: #{@phone_number}\nTelegram: #{@telegram}\nEmail: #{@email}\nGitHub: #{@github}"
-  end
-
+  
 end
+
 
 
 
