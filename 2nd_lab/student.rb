@@ -2,7 +2,7 @@
 class Student
   attr_accessor :id, :last_name, :first_name, :middle_name, :phone_number, :telegram, :email, :github
 
-  def initialize(id:, last_name:, first_name:, middle_name:, phone_number:, telegram:, email:, github:)
+  def initialize(id:, last_name:, first_name:, middle_name:, phone_number: nil, telegram: nil, email: nil, github: nil)
     @id = id
     @last_name = last_name
     @first_name = first_name
