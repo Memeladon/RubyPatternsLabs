@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'student.rb'
 
 student1 = Student.new(id:1, last_name:'Ppzov', first_name:'Dmitry', surname:'Temurovich', phone_number:'8-800-555-35-35')
