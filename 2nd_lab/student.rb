@@ -23,6 +23,11 @@ class Student
 
   end
 
+  def validate
+    raise ArgumentError, 'No contact information provided' if !@phone && !@telegram && !@email
+    raise ArgumentError, 'No GitHub provided' unless @git
+  end
+
   def self.valid_phone_number?(phone)
     phone.to_s.match?(/^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/)
   end
