@@ -1,5 +1,7 @@
-class Student_short
+require_relative '../Task 2/student_super'
+class Student_short < Student_super
   attr_reader :id, :surname_initials, :git, :contact
+  public_class_method :new
 
   def initialize(id , info)
     @id = id
