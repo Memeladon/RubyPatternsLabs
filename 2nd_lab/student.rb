@@ -8,21 +8,50 @@ class Student
     @patronymic = args[:patronymic] || ''
     @phone = args[:phone] || ''
 
+    raise ArgumentError, 'Invalid surname' unless Student.valid_surname?(@surname)
+    raise ArgumentError, 'Invalid name' unless Student.valid_name?(@name)
+    raise ArgumentError, 'Invalid patronymic' unless Student.valid_patronymic?(@patronymic)
     raise ArgumentError, 'Invalid phone number' unless Student.valid_phone_number?(@phone)
 
     @telegram = args[:telegram] || ''
     @email = args[:email] || ''
     @git = args[:git] || ''
+
+    # raise ArgumentError, 'Invalid telegram' unless Student.valid_telegram?(@telegram)
+    # raise ArgumentError, 'Invalid email' unless Student.valid_email?(@email)
+    # raise ArgumentError, 'Invalid git' unless Student.valid_git?(@git)
+
   end
 
   def self.valid_phone_number?(phone)
     phone.to_s.match?(/^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/)
   end
 
+  def self.valid_name?(name)
+    name.match?(/^[а-яА-ЯёЁa-zA-Z]+$/)
+  end
+
+  def self.valid_surname?(surname)
+    surname.match?(/^[а-яА-ЯёЁa-zA-Z]+$/)
+  end
+
+  def self.valid_patronymic?(patronymic)
+    patronymic.match?(/^[а-яА-ЯёЁa-zA-Z]+$/)
+  end
+
+  def self.valid_email?(email)
+    email.match?(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
+  end
+
+  def self.valid_telegram?(telegram)
+    telegram.match?(/^[a-zA-Z0-9_]{5,32}$/)
+  end
+
+  def self.valid_git?(git)
+    git.match?(/^(https:\/\/)?github\.com\/[a-zA-Z0-9_]+\/?$/)
+  end
+
   def to_s
     "ID: #{@id}\nSurname: #{@surname}\nName: #{@name}\nPatronymic: #{@patronymic}\nPhone number: #{[@phone]}\nTelegram: #{@telegram}\nEmail: #{@email}\nGitHub: #{@git}"
   end
-
-
-
 end
