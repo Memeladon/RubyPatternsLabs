@@ -1,4 +1,4 @@
-require_relative 'student.rb'
+require_relative '../dent.rb'
 
 student1 = Student.new(id:1, surname:'Pozov', name:'Dmitry', patronymic:'Temurovich', git:'https://github.com/username/pozov')
 student1.set_contacts(telegram: 'pozov')
