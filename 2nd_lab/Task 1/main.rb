@@ -1,4 +1,5 @@
 require_relative '../Task 1/student'
+require_relative '../Task 2/student_short'
 
 student1 = Student.new(id:1, surname:'Pozov', name:'Dmitry', patronymic:'Temurovich', git:'https://github.com/username/pozov')
 student1.set_contacts(telegram: 'pozov')
@@ -16,4 +17,5 @@ puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "Student 2:"
 puts student2.to_s
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-puts student2.getInfo
+student2_short = Student_short.new(2, student2.getInfo)
+puts student2_short.getInfo
