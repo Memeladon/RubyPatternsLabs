@@ -62,4 +62,11 @@ class Student
   def to_s
     "ID: #{@id}\nSurname: #{@surname}\nName: #{@name}\nPatronymic: #{@patronymic}\nPhone number: #{[@phone]}\nTelegram: #{@telegram}\nEmail: #{@email}\nGitHub: #{@git}"
   end
+
+  def getInfo
+    initials = @name[0] + '. ' + @patronymic[0] + '.'
+    contact_info = (@phone.empty? ? 'Telegram' : 'Phone') + ': ' + (@phone.empty? ? @telegram : @phone)
+    "Full name: #{@surname} #{initials}; GitHub: #{@git}; Contact: #{contact_info}"
+  end
+
 end
