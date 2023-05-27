@@ -6,26 +6,29 @@ class Student
     @surname = args[:surname] || ''
     @name = args[:name] || ''
     @patronymic = args[:patronymic] || ''
-    @phone = args[:phone] || ''
 
     raise ArgumentError, 'Invalid surname' unless Student.valid_surname?(@surname)
     raise ArgumentError, 'Invalid name' unless Student.valid_name?(@name)
     raise ArgumentError, 'Invalid patronymic' unless Student.valid_patronymic?(@patronymic)
-    raise ArgumentError, 'Invalid phone number' unless Student.valid_phone_number?(@phone)
 
+    @phone = args[:phone] || ''
     @telegram = args[:telegram] || ''
     @email = args[:email] || ''
     @git = args[:git] || ''
 
-    # raise ArgumentError, 'Invalid telegram' unless Student.valid_telegram?(@telegram)
-    # raise ArgumentError, 'Invalid email' unless Student.valid_email?(@email)
-    # raise ArgumentError, 'Invalid git' unless Student.valid_git?(@git)
+    raise ArgumentError, 'Invalid git' unless Student.valid_git?(@git)
 
   end
 
   def validate
     raise ArgumentError, 'No contact information provided' if !@phone && !@telegram && !@email
     raise ArgumentError, 'No GitHub provided' unless @git
+  end
+
+  def set_contacts(phone: '', telegram: '', email: '')
+    @phone = phone if Student.valid_phone_number?(phone)
+    @telegram = telegram if Student.valid_telegram?(telegram)
+    @email = email if Student.valid_email?(email)
   end
 
   def self.valid_phone_number?(phone)
@@ -53,7 +56,7 @@ class Student
   end
 
   def self.valid_git?(git)
-    git.match?(/^(https:\/\/)?github\.com\/[a-zA-Z0-9_]+\/?$/)
+    git.match?(/^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/)
   end
 
   def to_s
