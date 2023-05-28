@@ -70,7 +70,7 @@ module GoodCode
     end
   end
 
-  class Event < Operation
+  class Goal < Operation
     def complect_goal
       goal_obj = {
         :id         => goal.gid,
