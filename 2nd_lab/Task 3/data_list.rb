@@ -14,7 +14,16 @@ class Data_list
   def get_names
     raise NotImplementedError, "This method is implemented in subclasses"
   end
-  def get_data
+  def get_data(obj)
     raise NotImplementedError, "This method is implemented in subclasses"
+  end
+
+  # Общая логика
+  private
+  def format_data(data)
+    data.map { |obj| get_data(obj) }
+  end
+  def format_names(names)
+    names.map(&:to_s)
   end
 end

@@ -12,4 +12,5 @@ class Data_table
   def num_rows
     @data.length
   end
+
 end
