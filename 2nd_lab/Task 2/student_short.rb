@@ -19,7 +19,7 @@ class Student_short < Student_super
     new(student_obj.id, student_obj.get_info)
   end
 
-  def getInfo
+  def GetInfoOut
     "Full name: #{@surname_initials}; GitHub: #{@git}; Contact: #{@contact}"
   end
 

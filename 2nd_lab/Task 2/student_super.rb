@@ -4,36 +4,32 @@ class Student_super
   public
 
   attr_reader :id, :git, :phone, :email, :telegram
-  attr_writer :id
-  def initialize(id:nil, phone:nil, telegram: nil, email: nil, git:nil )
-    self.id=id
-    self.git=git
-    set_contacts(telegram:telegram, phone: phone, email:email, git:git)
-  end
 
   #Сеттеры
-  def phone=(value)
-    raise ArgumentError, "Invalid phone" unless self.class.valid_phone?(value)
-    @phone = value
+  def id=(id)
+    @id = id
   end
-  def telegram=(value)
-    raise ArgumentError, "Invalid telegram" unless self.class.valid_telegram?(value)
-    @telegram = value
+  def phone=(phone)
+    raise ArgumentError, "Invalid phone" unless self.class.valid_phone_number?(phone)
+    @phone = phone
   end
-  def email=(value)
-    raise ArgumentError, "Invalid email" unless self.class.valid_email?(value)
-    @email = value
+  def telegram=(telegram)
+    raise ArgumentError, "Invalid telegram" unless self.class.valid_telegram?(telegram)
+    @telegram = telegram
+  end
+  def email=(email)
+    raise ArgumentError, "Invalid email" unless self.class.valid_email?(email)
+    @email = email
   end
   def git=(value)
     raise ArgumentError, "Invalid git" unless self.class.valid_git?(value)
     @git = value
   end
 
-  def set_contacts(phone: '', telegram: '', email: '', git: '')
+  def set_contacts(phone: '', telegram: '', email: '')
     @phone = phone if Student.valid_phone_number?(phone)
     @telegram = telegram if Student.valid_telegram?(telegram)
     @email = email if Student.valid_email?(email)
-    @git = git if  Student.valid_git?(git)
   end
 
   # Поиск средства связи для get_info
@@ -61,13 +57,14 @@ class Student_super
   def self.valid_git?(git)
     git.nil? || git.match?(/^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/)
   end
+  def self.valid_name?(name)
+    name == '' ||name.match?(/^[а-яА-ЯёЁa-zA-Z]+$/)
+  end
+
 
   #Метод validate
   def validate
     raise ArgumentError, 'No contact information provided' if !@phone && !@telegram && !@email
     # raise ArgumentError, 'No GitHub provided' unless @git
   end
-
-
-
 end
