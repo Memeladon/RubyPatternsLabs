@@ -19,4 +19,4 @@ puts student2.to_s
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 student2_short = Student_short.new(2, student2.getInfo)
-puts student2_short.GetInfoOut
+puts student2_short.getInfoOut

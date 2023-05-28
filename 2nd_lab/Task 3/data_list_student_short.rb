@@ -11,11 +11,11 @@ class Data_list_student_short < Data_list
     [obj.surname_initials, obj.git, obj.contact]
   end
 
-  private
-  def format_data(data)
-    super(data).map { |datum| datum.join(', ') }
-  end
-  def format_names(names)
-    super(names).map { |name| name.capitalize }
-  end
+  # private
+  # def format_data(data)
+  #   super(data).map { |datum| datum.join(', ') }
+  # end
+  # def format_names(names)
+  #   super(names).map { |name| name.capitalize }
+  # end
 end
