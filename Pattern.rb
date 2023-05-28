@@ -28,7 +28,6 @@ module BadCode
         :goal => {:id => goal.gid, :title  => goal.title, :ts => goal.ts},
         :task =>  {:id  => task.gid, :title => task.title,  :ts  => task.ts, :author  => task..author_id, :holder => complect_holder}
       }
-      }
       return operation
     end
   end
