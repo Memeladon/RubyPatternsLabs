@@ -22,7 +22,7 @@ class Student_super
     @email = email
   end
   def git=(value)
-    raise ArgumentError, "Invalid git" unless self.class.valid_git?(value)
+    # raise ArgumentError, "Invalid git" unless self.class.valid_git?(value)
     @git = value
   end
 

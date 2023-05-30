@@ -20,7 +20,6 @@ class Superclass
   # b. Метод записи в файл
   def self.write_to_file(file_path, students, file_type)
     students_array = []
-
     students.each do |student|
       students_array << student.to_hash
     end
@@ -84,6 +83,7 @@ class Superclass
   private
   def self.read_data(file_path, file_type)
     data = []
+
     case file_type
     when 'json'
       File.open(file_path, 'r') do |file|

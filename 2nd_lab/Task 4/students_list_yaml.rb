@@ -1,13 +1,12 @@
-class Students_list_YAML < Superclass
-  def initialize(file_path)
-    @file_path = file_path
-    @file_type = 'yaml'
-    @students = []
+require_relative '../Task 4/strategy'
+require_relative '../Task 4/superclass'
+class Students_list_YAML < Strategy
 
-    @students = self.class.read_from_file(@file_path, @file_type)
+  def read_students
+    Superclass.read_from_file(@file_path, 'yaml')
   end
 
-  def save(new_students)
-    self.class.write_to_file(@file_path, new_students, @file_type)
+  def save_students(new_students)
+    Superclass.write_to_file(@file_path, new_students, 'yaml')
   end
 end

@@ -7,15 +7,12 @@ class Data_list
     self.data_list = data
     self.selected_data = []
   end
-
   def select(*numbers)
     selected_data.append(*numbers)
   end
-
   def get_select
     selected_data.inject([]) {|res, index| res<<data_list[index].id}
   end
-
   def clear_selected
     self.selected_data = []
   end
