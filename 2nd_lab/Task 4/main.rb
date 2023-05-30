@@ -22,5 +22,7 @@ student3.validate
 ########################################################################################################################
 
 students = [student1, student2, student3]
-Students_list_JSON.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.json", students )
-Students_list_YAML.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml", students )
+Students_list_JSON.new("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.json")
+Students_list_YAML.new("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml")
+Students_list_JSON.save(students)
+Students_list_YAML.save(students)
