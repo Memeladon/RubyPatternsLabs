@@ -3,6 +3,7 @@ require_relative '../Task 2/student_short'
 require_relative '../Task 3/data_list_student_short'
 require_relative '../Task 3/data_table'
 require_relative '../Task 4/students_list_json'
+require_relative '../Task 4/students_list_yaml'
 
 ########################################################################################################################
 
@@ -20,4 +21,6 @@ student3.validate
 
 ########################################################################################################################
 
-Students_list_JSON.write_to_file("students.json", [student1, student2])
+students = [student1, student2, student3]
+Students_list_JSON.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.json", students )
+Students_list_YAML.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml", students )
