@@ -1,36 +1,31 @@
 class Data_list
-  attr_reader :data, :names
+  # private_class_method :new
+  # public_class_method :new
+  attr_accessor :data_list, :selected_data
+
   def initialize(data)
-    @names = get_names
-    self.data = data
-    @selected = []
+    self.data_list = data
+    self.selected_data = []
   end
 
-  def data=(data)
-    @data = validated_data(data)
+  def select(*numbers)
+    selected_data.append(*numbers)
   end
-  def select(number)
-    @selected << number unless @selected.include?(number)
+
+  def get_select
+    selected_data.inject([]) {|res, index| res<<data_list[index].id}
   end
-  def get_selected
-    # Метод просто возвращает массив @selected.
-    @selected
+
+  def clear_selected
+    self.selected_data = []
   end
+
+  # применение паттерна Шаблон
   def get_names
     raise NotImplementedError, "This method is implemented in subclasses"
   end
   def get_data(obj)
     raise NotImplementedError, "This method is implemented in subclasses"
-  end
-
-  private
-  def validated_data(data)
-    raise ArgumentError, "Data should be an array" unless data.is_a?(Array)
-    raise ArgumentError, "Data should not be empty" if data.empty?
-    raise ArgumentError, "Data elements should have the same structure" unless data.all? { |obj| obj.instance_of?(data[0].class) }
-    raise ArgumentError, "Data elements should have properties #{names}" unless data.all? { |obj| names.all? { |prop| obj.respond_to?(prop) } }
-
-    data
   end
 
 end

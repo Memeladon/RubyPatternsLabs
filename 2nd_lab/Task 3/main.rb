@@ -24,8 +24,7 @@ students = Data_table.new([
  Student_short.from_obj(student2),
  Student_short.from_obj(student3)
 ])
-data_list = Data_list_student_short.new(students)
-
-puts data_list.get_names.inspect # ["Surname_initials", "Git", "Contact"]
-puts data_list.get_data(students[0]).inspect # ["Pozov D. T.", "https://github.com/username/pozov", "8-800-555-35-35"]
-
+data_list = Data_list_student_short.new(students.table)
+p data_list.select(0)
+p data_list.get_select
+  data_list.get_data.printer
