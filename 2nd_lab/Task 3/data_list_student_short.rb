@@ -14,18 +14,17 @@ class Data_list_student_short < Data_list
     %w[surname_initials git contact]
   end
 
-  def get_data
-    student_data = self.data_list.map.with_index do |student, i|
-      [i+1] + get_names.map { |attr| student.send(attr.to_sym) }
-    end
-    Data_table.new(student_data)
+  def get_information(obj)
+    [obj.surname_initials, obj.git, obj.contact]
   end
 
   private
   def format_data(data)
     super(data).map { |datum| datum.join(', ') }
   end
+
   def format_names(names)
     super(names).map { |name| name.capitalize }
   end
+
 end

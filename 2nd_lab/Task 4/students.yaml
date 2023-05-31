@@ -1,0 +1,21 @@
+---
+- "ID: 1\nSurname: Pozov\nName: Dmitry\nPatronymic: Temurovich\nPhone number: [\"8-800-555-35-35\"]\nTelegram:
+  pozovvv\nEmail: \nGitHub: https://github.com/username/pozov"
+- |-
+  ID: 2
+  Surname: Shastoon
+  Name: Anton
+  Patronymic: Andreevich
+  Phone number: ["8-922-057-39-42"]
+  Telegram: shastoonnn
+  Email: shastoon@mail.com
+  GitHub: https://github.com/username/shastoon
+- |-
+  ID: 3
+  Surname: Popov
+  Name: Arseniy
+  Patronymic: Sergeevich
+  Phone number: ["8-918-356-23-47"]
+  Telegram: popovvv
+  Email: popov@mail.com
+  GitHub: https://github.com/username/popov

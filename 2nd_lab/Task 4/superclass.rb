@@ -21,7 +21,7 @@ class Superclass
   def self.write_to_file(file_path, students, file_type)
     students_array = []
     students.each do |student|
-      students_array << student.to_hash
+      students_array << student.to_s
     end
 
     write_data(file_path, students_array, file_type)

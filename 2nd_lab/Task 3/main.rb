@@ -24,7 +24,8 @@ students = Data_table.new([
  Student_short.from_obj(student2),
  Student_short.from_obj(student3)
 ])
+
 data_list = Data_list_student_short.new(students.table)
 p data_list.select(0)
 p data_list.get_select
-  data_list.get_data.printer
+data_list.get_data.printer

@@ -21,8 +21,20 @@ class Data_list
   def get_names
     raise NotImplementedError, "This method is implemented in subclasses"
   end
-  def get_data(obj)
+
+  def get_information(obj)
     raise NotImplementedError, "This method is implemented in subclasses"
+
   end
+
+  def get_data
+    student_data = []
+    self.data_list.map.with_index do |student, i|
+      student_data.append([i].append(self.get_information(student)))
+    end
+    Data_table.new(student_data)
+
+  end
+
 
 end

@@ -20,7 +20,7 @@ class Data_table
   end
 
   def printer
-    self.table.each {|item| p item[0].to_s + ' ' + item[1].to_s + ' ' + item[2]}
+    self.table.each {|item| p item[0].to_s + ' ' + item[1].to_s + ' '}
   end
   def get_element(row, col)
     self.table[row][col]
