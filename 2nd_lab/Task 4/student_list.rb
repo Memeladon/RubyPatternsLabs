@@ -1,30 +1,20 @@
 require_relative '../Task 3/data_list'
 require 'json'
 require 'yaml'
-class Superclass
+class Student_list
   attr_accessor :students
+  def initialize(strategy)
+    @strategy = strategy
+  end
 
   # a. Метод чтения из файла
-  def self.read_from_file(file_path, file_type)
-    students = []
-
-    data = read_data(file_path, file_type)
-
-    data.each do |student_data|
-      students << Student.new(student_data)
-    end
-
-    students
+  def self.read_from_file
+    @strategy.read_students
   end
 
   # b. Метод записи в файл
-  def self.write_to_file(file_path, students, file_type)
-    students_array = []
-    students.each do |student|
-      students_array << student.to_s
-    end
-
-    write_data(file_path, students_array, file_type)
+  def self.write_to_file(new_students)
+    @strategy.save_students(new_students)
   end
 
   # c. Метод получения объекта Student по ID
@@ -80,36 +70,4 @@ class Superclass
     data_list.data.length
   end
 
-  private
-  def self.read_data(file_path, file_type)
-    data = []
-
-    case file_type
-    when 'json'
-      File.open(file_path, 'r') do |file|
-        students_json = file.read
-        data = JSON.parse(students_json)
-      end
-    when 'yaml'
-      data = YAML.load_file(file_path)
-    else
-      raise TypeError, "Invalid file_type"
-    end
-    data
-  end
-
-  def self.write_data(file_path, data, file_type)
-    case file_type
-    when 'json'
-      File.open(file_path, 'w') do |file|
-        file.write(data.to_json)
-      end
-    when 'yaml'
-      File.open(file_path, 'w') do |file|
-        file.write(data.to_yaml)
-      end
-    else
-      raise TypeError, "Invalid file_type"
-    end
-  end
 end

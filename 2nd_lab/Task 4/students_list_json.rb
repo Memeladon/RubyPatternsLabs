@@ -1,13 +1,34 @@
 require_relative '../Task 4/strategy'
-require_relative '../Task 4/superclass'
+require_relative '../Task 4/student_list'
 
 class Students_list_JSON < Strategy
 
+  # a. Метод чтения из файла
   def read_students
-    Superclass.read_from_file(@file_path, 'json')
+    students = []
+
+    data = []
+    File.open(@file_path, 'r') do |file|
+      students_json = file.read
+      data = JSON.parse(students_json)
+    end
+
+    data.each do |student_data|
+      students << Student.new(student_data)
+    end
+
+    students
   end
 
-  def save_students(new_students)
-    Superclass.write_to_file(@file_path, new_students, 'json')
+  # b. Метод записи в файл
+  def self.save_students(students)
+    students_array = []
+    students.each do |student|
+      students_array << student.to_s
+    end
+
+    File.open(@file_path, 'w') do |file|
+      file.write(data.to_json)
+    end
   end
 end

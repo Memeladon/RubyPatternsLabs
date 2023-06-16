@@ -1,7 +1,7 @@
 require_relative '../Task 1/student'
 require_relative '../Task 4/students_list_json'
 require_relative '../Task 4/students_list_yaml'
-require_relative '../Task 4/superclass'
+require_relative '../Task 4/st'
 require_relative '../Task 4/Client'
 
 ########################################################################################################################
@@ -21,7 +21,7 @@ student3.validate
 ########################################################################################################################
 
 students = [student1, student2, student3]
-Superclass.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml", students, 'yaml')
+Student_list.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml", students, 'yaml')
 
 '''
 yaml_file = Students_list_YAML.new("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml")

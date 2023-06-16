@@ -1,10 +1,25 @@
 require 'sqlite3'
 
-# создаем подключение к базе данных
-db = SQLite3::Database.new 'test.db'
+class Database
 
-# выполняем SQL-запрос
-db.execute 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)'
+  def initialize
+    @db = SQLite3::Database.new "students.db"
+  end
 
-# закрываем подключение
-db.close
+  def cute
+    @db.execute <<-SQL
+    CREATE TABLE IF NOT EXISTS student (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      surname TEXT,
+      name TEXT,
+      patronymic TEXT,
+      git TEXT,
+      phone TEXT,
+      email TEXT,
+      telegram TEXT
+    );
+    SQL
+  end
+end
+
+Dir.mkdir("database_scripts") unless Dir.exist?("database_scripts")

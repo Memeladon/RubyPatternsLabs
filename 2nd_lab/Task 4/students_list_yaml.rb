@@ -1,12 +1,31 @@
 require_relative '../Task 4/strategy'
-require_relative '../Task 4/superclass'
+require_relative '../Task 4/student_list'
 class Students_list_YAML < Strategy
 
+  # a. Метод чтения из файла
   def read_students
-    Superclass.read_from_file(@file_path, 'yaml')
+    students = []
+
+    data = YAML.load_file(@file_path)
+
+    data.each do |student_data|
+      students << Student.new(student_data)
+    end
+
+    students
   end
 
-  def save_students(new_students)
-    Superclass.write_to_file(@file_path, new_students, 'yaml')
+  # b. Метод записи в файл
+  def save_students(students)
+    students_array = []
+    students.each do |student|
+      students_array << student.to_s
+    end
+
+    File.open(@file_path, 'w') do |file|
+      file.write(data.to_yaml)
+    end
   end
+
+  private
 end
