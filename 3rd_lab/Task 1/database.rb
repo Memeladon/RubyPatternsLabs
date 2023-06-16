@@ -54,6 +54,25 @@ class Database
       VALUES (#{data});
     SQL
 
+
     puts 'Data inserted successfully!'
+  end
+  def select_all_data
+    rows = @db.execute('SELECT * FROM student')
+    puts rows
+
+    data_script = File.new(File.join(DATA_DIR, 'insert_students_data.sql'), 'w')
+    data_script.puts <<-SQL
+      SELECT * FROM student
+    SQL
+  end
+  def select_student(id)
+    row = @db.execute("SELECT * FROM student WHERE id = #{id}")
+    puts row
+
+    data_script = File.new(File.join(DATA_DIR, 'insert_students_data.sql'), 'w')
+    data_script.puts <<-SQL
+      SELECT * FROM student WHERE id = #{id};
+    SQL
   end
 end
