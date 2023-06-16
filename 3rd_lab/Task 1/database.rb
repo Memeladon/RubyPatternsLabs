@@ -2,11 +2,18 @@ require 'sqlite3'
 
 class Database
 
+  Dir.mkdir("3rd_lab/Task 1/database_scripts") unless Dir.exist?("3rd_lab/Task 1/database_scripts")
+
+  STRUCTURE_DIR = '3rd_lab/Task 1/database_scripts/structure_changes'
+  DATA_DIR = '3rd_lab/Task 1/database_scripts/data_scripts'
+
   def initialize
-    @db = SQLite3::Database.new "students.db"
+    @db = SQLite3::Database.new "3rd_lab/Task 1/students.db"
+    @structure_dir = Dir.mkdir(STRUCTURE_DIR) unless File.exist?(STRUCTURE_DIR)
+    @data_dir = Dir.mkdir(DATA_DIR) unless File.exist?(DATA_DIR)
   end
 
-  def cute
+  def create_table
     @db.execute <<-SQL
     CREATE TABLE IF NOT EXISTS student (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,7 +26,34 @@ class Database
       telegram TEXT
     );
     SQL
+
+    structure_changes = File.new(File.join(STRUCTURE_DIR, 'create_student_table.sql'), 'w')
+    structure_changes.puts <<-SQL
+    CREATE TABLE IF NOT EXISTS student (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      surname TEXT,
+      name TEXT,
+      patronymic TEXT,
+      git TEXT,
+      phone TEXT,
+      email TEXT,
+      telegram TEXT
+    );
+    SQL
+
+    puts 'Student table created successfully!'
+  end
+
+  def insert_data(data)
+    @db.execute("INSERT INTO student (surname, name, patronymic, git, phone, email, telegram)
+                  VALUES (?,?,?,?,?,?,?)", data)
+
+    data_script = File.new(File.join(DATA_DIR, 'insert_students_data.sql'), 'w')
+    data_script.puts <<-SQL
+      INSERT INTO student (surname, name, patronymic, git, phone, email, telegram)
+      VALUES (#{data});
+    SQL
+
+    puts 'Data inserted successfully!'
   end
 end
-
-Dir.mkdir("database_scripts") unless Dir.exist?("database_scripts")

@@ -51,7 +51,7 @@ class Student_super
   end
 
   def self.valid_telegram?(telegram)
-    telegram.nil? || telegram.match?(/^[a-zA-Z0-9_]{5,32}$/)
+    telegram.nil? || telegram.match?(/^@[a-zA-Z0-9_]{5,32}$/)
   end
 
   def self.valid_git?(git)
