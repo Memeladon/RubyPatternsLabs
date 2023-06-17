@@ -1,6 +1,4 @@
 class Data_list
-  # private_class_method :new
-  # public_class_method :new
   attr_accessor :data_list, :selected_data
 
   def initialize(data)
@@ -16,17 +14,14 @@ class Data_list
   def clear_selected
     self.selected_data = []
   end
-
   # применение паттерна Шаблон
   def get_names
     raise NotImplementedError, "This method is implemented in subclasses"
   end
-
   def get_information(obj)
     raise NotImplementedError, "This method is implemented in subclasses"
 
   end
-
   def get_data
     student_data = []
     self.data_list.map.with_index do |student, i|
@@ -35,6 +30,4 @@ class Data_list
     Data_table.new(student_data)
 
   end
-
-
 end

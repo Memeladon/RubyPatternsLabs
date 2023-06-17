@@ -4,5 +4,8 @@
     <mapping uuid="385d3ef3-bc98-4461-95dd-86872335bdde" name="identifier.sqlite Mapping">
       <data-sources db="42eb1b5f-fe01-4614-9865-d21b9fc2cd1f" />
     </mapping>
+    <mapping uuid="5b23161a-66a4-4419-a70c-7d39fa4bf43b" name="students Mapping">
+      <data-sources db="b00dd53b-1caf-49ee-bf94-f4cd464ad36a" />
+    </mapping>
   </component>
 </project>
