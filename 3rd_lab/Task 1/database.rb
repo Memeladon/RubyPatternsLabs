@@ -14,14 +14,13 @@ class Database
     @data_dir = Dir.mkdir(DATA_DIR) unless File.exist?(DATA_DIR)
   end
 
-
   def create_table
     @db.execute <<-SQL
     CREATE TABLE IF NOT EXISTS student (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      surname TEXT,
-      name TEXT,
-      patronymic TEXT,
+      surname TEXT NOT NULL,
+      name TEXT NOT NULL,
+      patronymic TEXT NOT NULL,
       git TEXT,
       phone TEXT,
       email TEXT,

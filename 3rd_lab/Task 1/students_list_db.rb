@@ -1,13 +1,12 @@
+require 'singleton'
 require_relative 'database'
 require_relative '../../2nd_lab/Task 2/student_short'
 require_relative '../../2nd_lab/Task 1/student'
 require_relative '../../2nd_lab/Task 3/data_list'
 
 class Students_list_DB < Database
+  include Singleton
 
-  def initialize
-    super
-  end
   def get_student_by_id(id)
     row = @db.select_data(id)
     Student.new(id: row[0], surname: row[1], name: row[2],
@@ -39,7 +38,6 @@ class Students_list_DB < Database
       UPDATE student SET surname = ?, name = ?, patronymic = ?, git = ?, phone = ?, email = ?, telegram = ? WHERE id = ?,
                 #{student.surname}, #{student.name}, #{student.patronymic}, #{student.git}, #{student.phone}, #{student.email}, #{student.telegram}, #{student.id}
     SQL
-
     puts "Data replaced successfully!"
   end
   def delete_student(id)
@@ -68,7 +66,8 @@ class Students_list_DB < Database
     data_script.puts <<-SQL
       SELECT * FROM student
     SQL
-
     puts data
   end
+
+  private_class_method :new
 end
