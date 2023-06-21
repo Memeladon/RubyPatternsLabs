@@ -1,11 +1,29 @@
-require 'singleton'
-require_relative 'database'
+# require 'singleton'
+require_relative 'database_conn'
 require_relative '../../2nd_lab/Task 2/student_short'
 require_relative '../../2nd_lab/Task 1/student'
 require_relative '../../2nd_lab/Task 3/data_list'
 
-class Students_list_DB < Database
-  include Singleton
+class Students_list_DB
+  Dir.mkdir("3rd_lab/Task 1/database_scripts") unless Dir.exist?("3rd_lab/Task 1/database_scripts")
+  STRUCTURE_DIR = '3rd_lab/Task 1/database_scripts/structure_changes'
+  DATA_DIR = '3rd_lab/Task 1/database_scripts/data_scripts'
+
+  private_class_method :new
+
+  @instance_mutex = Mutex.new
+
+  def self.instance(db_obj)
+    return @instance if @instance
+    @instance_mutex.synchronize do
+      @instance ||= new(db_obj)
+    end
+    @instance
+  end
+
+  def initialize(db_obj)
+    @db = db_obj
+  end
 
   def get_student_by_id(id)
     row = @db.select_data(id)
@@ -68,6 +86,4 @@ class Students_list_DB < Database
     SQL
     puts data
   end
-
-  private_class_method :new
 end
