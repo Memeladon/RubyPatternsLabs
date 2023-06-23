@@ -1,5 +1,5 @@
-require_relative 'Data_list'
-require_relative 'Data_table'
+require_relative 'data_list'
+require_relative 'data_table'
 
 class Data_list_student_short < Data_list
   public_class_method :new

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="students" uuid="b00dd53b-1caf-49ee-bf94-f4cd464ad36a">
+    <data-source source="LOCAL" name="student" uuid="2638eb7c-7d7b-4386-aa8d-773453515afb">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\Dev\Ruby_work\RubyPatternsLabs\3rd_lab\Task 1\students.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\Dev\Ruby_work\RubyPatternsLabs\3rd_lab\student.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

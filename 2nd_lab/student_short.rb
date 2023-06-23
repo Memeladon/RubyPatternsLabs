@@ -1,4 +1,4 @@
-require_relative '../Task 2/student_super'
+require_relative 'student_super'
 class Student_short < Student_super
   attr_reader :id, :surname_initials, :git, :contact
   public_class_method :new
@@ -6,8 +6,6 @@ class Student_short < Student_super
   def initialize(id , info)
     @id = id
     parseInfo(info)
-
-
   end
   def self.from_obj(student)
     raise ArgumentError, 'Invalid argument type' unless student.is_a?(Student)
@@ -21,8 +19,9 @@ class Student_short < Student_super
   private
   def parseInfo(info)
     if info
-      @surname_initials, @git, contact_info = info.split(';').map(&:strip)
-      @contact = contact_info.split(': ')[1]
+      @surname_initials = "#{info['surname']} #{info['name'][0]}. #{info['patronymic'][0]}."
+      @git = info['git']
+      @contact = info['phone'] || info['email'] || info['telegram']
     end
   end
 end

@@ -1,4 +1,4 @@
-require_relative '../Task 3/data_list'
+require_relative 'data_list'
 require 'json'
 require 'yaml'
 class Student_list
