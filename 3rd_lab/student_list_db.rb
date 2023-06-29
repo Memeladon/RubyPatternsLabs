@@ -9,7 +9,7 @@ class Student_list_DB
 
   def get_student_by_id(id)
     row = @manipulation.get_student_by_id(id)
-    p Student.new(row[0])
+    Student.new(row[0])
   end
   def get_k_n_student_short_list(k, n)
     data = @manipulation.get_k_n_student_short_list(k, n)

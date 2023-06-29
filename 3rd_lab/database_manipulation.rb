@@ -3,7 +3,7 @@ require 'thread'
 require_relative '../2nd_lab/student'
 require_relative '../2nd_lab/student_short'
 require_relative '../2nd_lab/data_list'
-require_relative '../3rd_lab/dirs'
+require_relative '../3rd_lab/modules/dirs'
 
 class DatabaseManipulation
   include DIRS

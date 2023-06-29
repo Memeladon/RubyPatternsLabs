@@ -1,4 +1,4 @@
-require_relative '../2nd_lab/student'
+require_relative '../2nd_lab/ab/student'
 
 module StudentsTrials
   STUDENT1 = Student.new(id:1, surname:'Pozov', name:'Dmitry', patronymic:'Temurovich',  git:'https://github.com/username/pozov')
