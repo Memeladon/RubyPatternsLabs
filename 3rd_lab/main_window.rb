@@ -1,8 +1,6 @@
 require 'fox16'
 include Fox
 
-# Контроллер это стратегия для Вьюхи!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# Во вьюхе есть ссылка на объект контроллера. У контроллера есть на модель.
 
 class MainWindow < FXMainWindow
   def initialize(app)

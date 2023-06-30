@@ -31,10 +31,4 @@ Student_list.write_to_file("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/stu
 '''
 yaml_file = Students_list_YAML.new("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.yaml")
 json_file = Students_list_YAML.new("D:/Dev/Ruby_work/RubyPatternsLabs/2nd_lab/Task 4/students.json")
-
-json_strategy = Client.new(json_file)
-json_strategy.read_all_students
-
-yaml_strategy =  Client.new(yaml_file)
-yaml_strategy.save_students(students)
 '''
